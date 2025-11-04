@@ -1,7 +1,13 @@
 package repositories
 
-type TaskRepository struct{}
+import "gorm.io/gorm"
 
-func NewTaskRepository() *TaskRepository {
-	return &TaskRepository{}
+type TaskRepository struct {
+	db *gorm.DB
+}
+
+func NewTaskRepository(db *gorm.DB) *TaskRepository {
+	return &TaskRepository{
+		db: db,
+	}
 }
