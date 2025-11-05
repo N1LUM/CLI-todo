@@ -1,8 +1,14 @@
 package repositories
 
-import "gorm.io/gorm"
+import (
+	"CLI-todo/internal/models"
 
-type Task interface{}
+	"gorm.io/gorm"
+)
+
+type Task interface {
+	Create(task *models.Task) error
+}
 
 type Repository struct {
 	Task *TaskRepository
