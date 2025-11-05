@@ -1,8 +1,13 @@
 package services
 
-import "CLI-todo/internal/repositories"
+import (
+	"CLI-todo/internal/models"
+	"CLI-todo/internal/repositories"
+)
 
-type Task interface{}
+type Task interface {
+	Create(name string) (*models.Task, error)
+}
 
 type Service struct {
 	Task *TaskService
