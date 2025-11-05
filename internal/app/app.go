@@ -17,6 +17,8 @@ func Run() {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
+	database.MigratePostgres(db)
+
 	repository := repositories.NewRepository(db)
 	service := services.NewService(repository)
 
