@@ -2,8 +2,10 @@ package database
 
 import (
 	"CLI-todo/configs"
+	"CLI-todo/internal/models"
 	"fmt"
 
+	"github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -18,4 +20,16 @@ func ConnectPostgres(cfg *configs.DBConfig) (*gorm.DB, error) {
 		return nil, fmt.Errorf("failed to connect to DB: %w", err)
 	}
 	return db, nil
+}
+
+func MigratePostgres(db *gorm.DB) {
+	logrus.Info("Running auto-migrations...")
+
+	if err := db.AutoMigrate(
+		&models.Task{},
+	); err != nil {
+		logrus.Fatalf("migration failed: %v", err)
+	}
+
+	logrus.Info("Auto-migrations completed successfully")
 }
