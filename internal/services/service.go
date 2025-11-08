@@ -3,11 +3,15 @@ package services
 import (
 	"CLI-todo/internal/models"
 	"CLI-todo/internal/repositories"
+
+	"github.com/google/uuid"
 )
 
 type Task interface {
 	Create(name string) (*models.Task, error)
 	Update(name string) (*models.Task, error)
+	GetByID(id uuid.UUID) (*models.Task, error)
+	Delete(id uuid.UUID) (uuid.UUID, error)
 }
 
 type Service struct {
