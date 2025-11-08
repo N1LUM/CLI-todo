@@ -8,6 +8,7 @@ import (
 
 type Task interface {
 	Create(task *models.Task) error
+	Update(task *models.Task) error
 }
 
 type Repository struct {

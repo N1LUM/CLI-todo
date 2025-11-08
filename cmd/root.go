@@ -30,5 +30,6 @@ func Execute() {
 // init() — сюда добавляем только флаги, глобальные настройки и подкоманды
 func init() {
 	rootCmd.AddCommand(addTaskCmd)
+	rootCmd.AddCommand(updateTaskCmd)
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

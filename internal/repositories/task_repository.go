@@ -3,6 +3,7 @@ package repositories
 import (
 	"CLI-todo/internal/models"
 
+	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
@@ -21,4 +22,19 @@ func (r *TaskRepository) Create(task *models.Task) error {
 		return err
 	}
 	return nil
+}
+
+func (r *TaskRepository) Update(task *models.Task) error {
+	if err := r.db.Save(task).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *TaskRepository) GetByID(id uuid.UUID) (*models.Task, error) {
+	var task models.Task
+	if err := r.db.First(&task, "id = ?", id).Error; err != nil {
+		return nil, err
+	}
+	return &task, nil
 }

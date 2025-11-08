@@ -7,6 +7,7 @@ import (
 
 type Task interface {
 	Create(name string) (*models.Task, error)
+	Update(name string) (*models.Task, error)
 }
 
 type Service struct {
