@@ -8,7 +8,7 @@ import (
 var updateTaskCmd = &cobra.Command{
 	Use:   "update <id_of_task> <name_of_task>",
 	Short: "Update the task",
-	Long:  `Update the task with shared id`,
+	Long:  `Update the task by shared id`,
 	Run: func(cmd *cobra.Command, args []string) {
 		taskID, err := uuid.Parse(args[0])
 		if err != nil {
