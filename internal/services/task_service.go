@@ -4,6 +4,8 @@ import (
 	"CLI-todo/internal/models"
 	"CLI-todo/internal/repositories"
 	"errors"
+
+	"github.com/google/uuid"
 )
 
 type TaskService struct {
@@ -26,4 +28,20 @@ func (service *TaskService) Create(name string) (*models.Task, error) {
 	}
 
 	return &task, nil
+}
+
+func (service *TaskService) Update(task *models.Task) (*models.Task, error) {
+	if len(task.Name) == 0 {
+		return nil, errors.New("New name must be longer than 0 symbols")
+	}
+
+	if err := service.repository.Update(task); err != nil {
+		return nil, err
+	}
+
+	return task, nil
+}
+
+func (service *TaskService) GetByID(id uuid.UUID) (*models.Task, error) {
+	return service.repository.GetByID(id)
 }

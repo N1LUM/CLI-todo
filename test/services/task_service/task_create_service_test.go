@@ -1,4 +1,4 @@
-package services
+package task_service
 
 import (
 	"CLI-todo/test"
@@ -17,12 +17,12 @@ func TestTaskService_Create(t *testing.T) {
 		wantError bool
 	}{
 		{
-			name:      "valid task",
+			name:      "Valid parameters for create task",
 			taskName:  "New Task",
 			wantError: false,
 		},
 		{
-			name:      "empty task name",
+			name:      "Invalid parameters with empty task name",
 			taskName:  "",
 			wantError: true,
 		},
