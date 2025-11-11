@@ -32,5 +32,7 @@ func init() {
 	rootCmd.AddCommand(addTaskCmd)
 	rootCmd.AddCommand(updateTaskCmd)
 	rootCmd.AddCommand(deleteTaskCmd)
+	rootCmd.AddCommand(getTaskByIdCmd)
+	rootCmd.AddCommand(getListTaskCmd)
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

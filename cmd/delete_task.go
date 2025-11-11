@@ -7,8 +7,8 @@ import (
 
 var deleteTaskCmd = &cobra.Command{
 	Use:   "delete <id_of_task>",
-	Short: "Delete the task",
-	Long:  `Delete the task by shared id`,
+	Short: "Delete task",
+	Long:  `Delete task by shared id`,
 	Run: func(cmd *cobra.Command, args []string) {
 		taskID, err := uuid.Parse(args[0])
 		if err != nil {
