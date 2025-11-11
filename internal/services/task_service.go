@@ -46,6 +46,10 @@ func (service *TaskService) GetByID(id uuid.UUID) (*models.Task, error) {
 	return service.repository.GetByID(id)
 }
 
+func (service *TaskService) GetList() (*[]models.Task, error) {
+	return service.repository.GetList()
+}
+
 func (service *TaskService) Delete(id uuid.UUID) (uuid.UUID, error) {
 	if err := service.repository.Delete(id); err != nil {
 		return uuid.Nil, err

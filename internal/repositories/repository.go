@@ -11,6 +11,7 @@ type Task interface {
 	Create(task *models.Task) error
 	Update(task *models.Task) error
 	GetByID(id uuid.UUID) (*models.Task, error)
+	GetList() (*[]models.Task, error)
 	Delete(id uuid.UUID) (uuid.UUID, error)
 }
 

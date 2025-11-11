@@ -39,6 +39,14 @@ func (r *TaskRepository) GetByID(id uuid.UUID) (*models.Task, error) {
 	return &task, nil
 }
 
+func (r *TaskRepository) GetList() (*[]models.Task, error) {
+	var tasks []models.Task
+	if err := r.db.Order("created_at desc").Find(&tasks).Error; err != nil {
+		return nil, err
+	}
+	return &tasks, nil
+}
+
 func (r *TaskRepository) Delete(id uuid.UUID) error {
 	if err := r.db.Delete(&models.Task{}, "id = ?", id).Error; err != nil {
 		return err
